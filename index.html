@@ -34,11 +34,33 @@
       </nav>
     </header>
 
-    <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-4" style="background-color: pink;">FORM</div>
-        <div class="col-4" style="background-color: orange;">Buku belum selesai</div>
-        <div class="col-4" style="background-color: green;">Buku Selesai</div>
+    <div class="container-fluid mt-3">
+      <div class="row align-content-center">
+        <div class="col-4  p-3 rounded" style="background-color: pink;">
+          <form>  
+            <div class="mb-3">
+              <label for="bookTitle" class="form-label">Title</label>
+              <input type="text" class="form-control" id="bookTitle" placeholder="Title">
+            </div>
+            <div class="mb-3">
+              <label for="bookAuthor" class="form-label">Author</label>
+              <input type="text" class="form-control" id="bookAuthor" placeholder="Author">
+            </div>
+            <div class="mb-3">
+              <label for="bookYear" class="form-label">Year</label>
+              <input type="number" class="form-control" id="bookYear">
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-primary" type="button">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-4 p-3 rounded " style="background-color: orange;">Buku belum selesai</div>
+        <div class="col-4 p-3 rounded " style="background-color: green;">Buku Selesai</div>
       </div>
     </div>
 

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bookshelf-App</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- CSS -->
@@ -12,7 +14,7 @@
   </head>
   <body> 
     <header>
-      <nav class="navbar-dark" style="background-color: #e3f2fd;">
+      <nav class="navbar-dark mb-3" style="background-color: #e3f2fd;">
         <div class="container p-2">
           <div class="row justify-content-between">
             <div class="col">
@@ -34,12 +36,12 @@
       </nav>
     </header>
 
-    <div class="container-fluid mt-3">
+    <div class="container-fluid">
       <div class="row align-content-center">
-        <div class="col-md-4 text-light">
+        <div class="col-md-4 text-light mb-lg-0 mb-2">
           <div class="p-3 rounded" style="background-color: #3294cd;">
             <h4 class="text-center">Masukkan Buku Baru</h4>
-            <form id="inputBook " >  
+            <form id="inputBook" >  
               <div class="mb-3">
                 <label for="inputBookTitle" class="form-label"><strong>Judul</strong></label>
                 <input type="text" class="form-control" id="inputBookTitle" placeholder="Judul" required>
@@ -57,49 +59,16 @@
                 <label class="form-check-label" for="inputBookIsComplete">Selesai dibaca</label>
               </div>
               <div class="d-grid gap-2">
-                <button class="btn text-light" type="button" style="background-color: #94cd32 ;"><strong>Masukkan Buku ke rak</strong></button>
+                <button class="btn text-light" type="submit" style="background-color: #94cd32 ;"><strong>Masukkan Buku ke rak</strong></button>
               </div>
             </form>
           </div>
         </div>
         <!-- Belum selesai dibaca -->
-        <div class="col-md-4">
+        <div class="col-md-4 mb-lg-0 mb-2">
           <div class="p-3 pe-1 pb-2 rounded text-light" style="background-color: #3247cd;">
             <h4 class="text-center">Belum selesai dibaca</h4>
             <div class="bookshelf mb-2 pe-2">
-            <!-- list -->
-            <ul class="list-group mb-2">
-              <li class="list-group-item active" aria-current="true" style="background-color: #3294cd;"><strong>Judul</strong></li>
-              <li class="list-group-item"><span class="fw-semibold">Penulis</span> : Mahardika</li>
-              <li class="list-group-item"><span class="fw-semibold">Tahun</span> : 2023</li>
-              <li class="list-group-item text-evenly">
-                <button class="btn mx-1 border border-success" style="background-color: #94cd32; --bs-border-opacity: .10;"  type="button"><i class="fa-solid fa-check fa-lg" style="color: #fff;"></i></button>
-                <button class="btn btn-primary mx-1" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="btn btn-danger mx-1" type="button"><i class="fa-solid fa-trash-can"></i></button>
-              </li>
-            </ul>
-            <!-- list -->
-            <ul class="list-group mb-2">
-              <li class="list-group-item active" aria-current="true" style="background-color: #3294cd;"><strong>Judul</strong></li>
-              <li class="list-group-item"><span class="fw-semibold">Penulis</span> : Mahardika</li>
-              <li class="list-group-item"><span class="fw-semibold">Tahun</span> : 2023</li>
-              <li class="list-group-item text-evenly">
-                <button class="btn mx-1 border border-success" style="background-color: #94cd32; --bs-border-opacity: .10;"  type="button"><i class="fa-solid fa-check fa-lg" style="color: #fff;"></i></button>
-                <button class="btn btn-primary mx-1" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="btn btn-danger mx-1" type="button"><i class="fa-solid fa-trash-can"></i></button>
-              </li>
-            </ul>
-            <!-- list -->
-            <ul class="list-group mb-2">
-              <li class="list-group-item active" aria-current="true" style="background-color: #3294cd;"><strong>Judul</strong></li>
-              <li class="list-group-item"><span class="fw-semibold">Penulis</span> : Mahardika</li>
-              <li class="list-group-item"><span class="fw-semibold">Tahun</span> : 2023</li>
-              <li class="list-group-item text-evenly">
-                <button class="btn mx-1 border border-success" style="background-color: #94cd32; --bs-border-opacity: .10;"  type="button"><i class="fa-solid fa-check fa-lg" style="color: #fff;"></i></button>
-                <button class="btn btn-primary mx-1" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
-                <button class="btn btn-danger mx-1" type="button"><i class="fa-solid fa-trash-can"></i></button>
-              </li>
-            </ul>
             <!-- list -->
             <ul class="list-group mb-2">
               <li class="list-group-item active" aria-current="true" style="background-color: #3294cd;"><strong>Judul</strong></li>
@@ -115,15 +84,31 @@
           </div>
         </div>
         <!-- Selesai dibaca -->
-        <div class="col-md-4">
-          <div class="p-3 rounded text-light" style="background-color: #94cd32;">
+        <div class="col-md-4 mb-lg-0 mb-2">
+          <div class="p-3 pe-1 pb-2 rounded text-light" style="background-color: #94cd32;">
             <h4 class="text-center">Selesai dibaca</h4>
+            <div class="bookshelf mb-2 pe-2">
+              <!-- list -->
+              <ul class="list-group mb-2">
+                <li class="list-group-item active" aria-current="true" style="background-color: #3294cd;"><strong>Judul</strong></li>
+                <li class="list-group-item"><span class="fw-semibold">Penulis</span> : Mahardika</li>
+                <li class="list-group-item"><span class="fw-semibold">Tahun</span> : 2023</li>
+                <li class="list-group-item text-evenly">
+                  <button class="btn mx-1 border border-success" style="background-color: #ff8c00; --bs-border-opacity: .10;"  type="button"><i class="fa-solid fa-rotate-right fa-flip-horizontal fa-lg" style="color: #ffffff;"></i></button>
+                  <button class="btn btn-primary mx-1" type="button"><i class="fa-solid fa-pen-to-square"></i></button>
+                  <button class="btn btn-danger mx-1" type="button"><i class="fa-solid fa-trash-can"></i></button>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- JS -->
+    <script src="js/index.js"></script>
 
+    <!-- JS Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

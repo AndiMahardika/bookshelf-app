@@ -36,31 +36,38 @@
 
     <div class="container-fluid mt-3">
       <div class="row align-content-center">
-        <div class="col-4  p-3 rounded" style="background-color: pink;">
-          <form>  
-            <div class="mb-3">
-              <label for="bookTitle" class="form-label">Title</label>
-              <input type="text" class="form-control" id="bookTitle" placeholder="Title">
-            </div>
-            <div class="mb-3">
-              <label for="bookAuthor" class="form-label">Author</label>
-              <input type="text" class="form-control" id="bookAuthor" placeholder="Author">
-            </div>
-            <div class="mb-3">
-              <label for="bookYear" class="form-label">Year</label>
-              <input type="number" class="form-control" id="bookYear">
-            </div>
-            <div class="mb-3 form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <div class="d-grid gap-2">
-              <button class="btn btn-primary" type="button">Submit</button>
-            </div>
-          </form>
+        <div class="col-md-4 text-light">
+          <div class="p-3 rounded" style="background-color: #3294cd;">
+            <h4 class="text-center">Masukkan Buku Baru</h4>
+            <form id="inputBook" >  
+              <div class="mb-3">
+                <label for="inputBookTitle" class="form-label"><strong>Judul</strong></label>
+                <input type="text" class="form-control" id="inputBookTitle" placeholder="Judul" required>
+              </div>
+              <div class="mb-3">
+                <label for="inputBookAuthor" class="form-label"><strong>Penulis</strong></label>
+                <input type="text" class="form-control" id="inputBookAuthor" placeholder="Penulis" required>
+              </div>
+              <div class="mb-3">
+                <label for="inputBookYear" class="form-label"><strong>Tahun</strong></label>
+                <input type="number" class="form-control" id="inputBookYear" required>
+              </div>
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input border border-light" id="inputBookIsComplete">
+                <label class="form-check-label" for="inputBookIsComplete">Selesai dibaca</label>
+              </div>
+              <div class="d-grid gap-2">
+                <button class="btn text-light" type="button" style="background-color: #94cd32 ;"><strong>Masukkan Buku ke rak</strong></button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="col-4 p-3 rounded " style="background-color: orange;">Buku belum selesai</div>
-        <div class="col-4 p-3 rounded " style="background-color: green;">Buku Selesai</div>
+        <div class="col-md-4" style="background-color: #3247cd;">
+          <div class="p-3 rounded">
+
+          </div>
+        </div>
+        <div class="col-md-4 p-3 rounded " style="background-color: #94cd32;">Buku Selesai</div>
       </div>
     </div>
 

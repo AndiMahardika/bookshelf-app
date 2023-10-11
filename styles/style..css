@@ -1,3 +1,26 @@
 body{
   background-color: #f8f9fa;
 }
+
+.bookshelf {
+  max-height: 78vh; 
+  overflow-y: auto; 
+  margin-right: 7px;
+}
+
+.bookshelf::-webkit-scrollbar {
+  width: 12px;
+}
+
+.bookshelf::-webkit-scrollbar-track {
+  background: none;
+}
+
+.bookshelf::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 8px;
+}
+
+.bookshelf::-webkit-scrollbar-thumb:hover {
+  background: #fff;
+}

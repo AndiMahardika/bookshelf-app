@@ -128,13 +128,19 @@ function editDataBook(bookId){
     const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
     const editYear = document.getElementById(`inputEditBookYear`).value;
 
-    if(editTitle !== null && editAuthor !== null && editYear !== null){
+    // editTitle !== null && editAuthor !== null && editYear !== null
+    // editTitle.trim() !== '' && editAuthor.trim() !== '' && editYear.trim() !== ''
+    if(editTitle.trim() !== '' && editAuthor.trim() !== '' && editYear.trim() !== ''){
       bookTarget.title = editTitle;
       bookTarget.author = editAuthor;
       bookTarget.year = editYear;
   
       saveData();
       document.dispatchEvent(new Event(RENDER_EVENT));
+
+      document.getElementById(`inputEditBookTitle`).value = '';
+      document.getElementById(`inputEditBookAuthor`).value = '';
+      document.getElementById(`inputEditBookYear`).value = '';
     }
   })
 }

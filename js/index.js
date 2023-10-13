@@ -28,6 +28,12 @@ function addBook(){
 
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
+
+  document.getElementById(`inputBookTitle`).value = ``;
+  document.getElementById(`inputBookAuthor`).value = ``;
+  document.getElementById(`inputBookYear`).value = ``;
+  document.getElementById(`inputBookIsComplete`).checked = ``;
+
 }
 
 function generateID(){
@@ -119,7 +125,6 @@ function removeBook(bookId){
 }
 
 function editDataBook(bookId){
-  console.log(bookId);
   const bookTarget = findBook(bookId);
 
   const btnSubmitEdit = document.getElementById(`btn-submit`);
@@ -147,7 +152,6 @@ document.addEventListener(`click`, function(event){
   if(event.target.classList.contains(`btn-complete`)){
     const bookid = event.target.dataset.bookid;
     addBookToComplete(bookid);
-    console.log(bookid);
   }
   if(event.target.classList.contains(`btn-undo`)){
     const bookid = event.target.dataset.bookid;
@@ -162,6 +166,53 @@ document.addEventListener(`click`, function(event){
     removeBook(bookid);
   }
 })
+
+function findTitle(bookTitle){
+  for (const itemBook of books) {
+    if(itemBook.title == bookTitle){
+      return itemBook;
+    }
+  }
+  return null;
+}
+
+const btnSearch = document.getElementById(`btn-search`);
+btnSearch.addEventListener(`click`, function(){
+  const inputSearch = document.getElementById(`inputSearch`).value;
+  const targetSearch = findTitle(inputSearch);
+
+  if (targetSearch) {
+    showSearchModal(targetSearch);
+  } else {
+    Swal.fire({
+      title: 'Buku Tidak Ditemukan :(',
+      icon: 'error',
+      showConfirmButton: false,
+      showCancelButton: true,
+      cancelButtonText: 'OK',
+      cancelButtonColor: '#d33'
+    })
+  }
+
+  document.getElementById(`inputSearch`).value = ``;
+})
+
+function showSearchModal(book) {
+  const searchModal = new bootstrap.Modal(document.getElementById('searchBook'));
+
+  const statusColor = book.status ? 'text-success' : 'text-danger';
+
+  const modalBody = document.querySelector('#searchBook .modal-body');
+  modalBody.innerHTML = `
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item"><span class="fw-semibold fs-4">${book.title}</span></li>
+          <li class="list-group-item"><span class="fw-semibold">Penulis:</span> ${book.author}</li>
+          <li class="list-group-item"><span class="fw-semibold">Tahun:</span> ${book.year}</li>
+          <li class="list-group-item"><span class="fw-semibold ${statusColor}">Status:</span> ${book.status ? 'Selesai dibaca' : 'Belum selesai dibaca'}</li>
+      </ul>
+  `;
+  searchModal.show();
+}
 
 // RENDER_EVENT
 document.addEventListener(RENDER_EVENT, function(){

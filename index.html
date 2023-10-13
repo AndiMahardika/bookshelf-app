@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="styles/style..css">
+    <link rel="stylesheet" href="styles/style.css">
   </head>
   <body> 
     <header>
@@ -100,6 +100,45 @@
                 </li>
               </ul> -->
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Button trigger modal -->
+    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editBook">
+      Launch demo modal
+    </button> -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="editBook" tabindex="-1" aria-labelledby="editBookLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+          <i class="fa-solid fa-book-bookmark fs-5 me-2" style="color: #2d5992;"></i>
+          <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel" style="color: #2d5992;">Bookshelf</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body text-light" style="background-color: #3294cd;">
+            <h4 class="text-center">Edit Buku</h4>
+            <form id="editBookForm" >  
+              <div class="mb-3">
+                <label for="inputEditBookTitle" class="form-label"><strong>Judul</strong></label>
+                <input type="text" class="form-control" id="inputEditBookTitle" placeholder="Judul" required>
+              </div>
+              <div class="mb-3">
+                <label for="inputEditBookAuthor" class="form-label"><strong>Penulis</strong></label>
+                <input type="text" class="form-control" id="inputEditBookAuthor" placeholder="Penulis" required>
+              </div>
+              <div class="mb-3">
+                <label for="inputEditBookYear" class="form-label"><strong>Tahun</strong></label>
+                <input type="number" class="form-control" id="inputEditBookYear" required>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer justify-content-start">
+            <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn text-light fw-semibold" id="btn-submit" style="background-color: #94cd32;">Save changes</button>
           </div>
         </div>
       </div>

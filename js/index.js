@@ -52,8 +52,8 @@ function itemUncompleteBookshelfList(bookObject){
                                     <li class="list-group-item"><span class="fw-semibold">Tahun</span> : ${bookObject.year}</li>
                                     <li class="list-group-item text-evenly">
                                       <button class="btn mx-1 border border-success btn-complete" style="background-color: #94cd32; --bs-border-opacity: .10;" type="button" data-bookid="${bookObject.id}"><i class="fa-solid fa-check fa-lg btn-complete" style="color: #fff;" data-bookid="${bookObject.id}"></i></button>
-                                      <button class="btn btn-primary mx-1 btn-edit" type="button" data-bookid="${bookObject.id}"><i class="fa-solid fa-pen-to-square btn-edit" data-bookid="${bookObject.id}"></i></button>
-                                      <button class="btn btn-danger mx-1" type="button"><i class="fa-solid fa-trash-can btn-delete" data-bookid="${bookObject.id}"></i></button>
+                                      <button class="btn btn-primary mx-1 btn-edit" type="button" data-bookid="${bookObject.id}" data-bs-toggle="modal" data-bs-target="#editBook"><i class="fa-solid fa-pen-to-square btn-edit" data-bookid="${bookObject.id}"></i></button>
+                                      <button class="btn btn-danger mx-1 btn-delete" type="button" data-bookid="${bookObject.id}"><i class="fa-solid fa-trash-can btn-delete" data-bookid="${bookObject.id}"></i></button>
                                     </li>`
 
   return bookGroupUncompleted;                      
@@ -67,7 +67,7 @@ function itemCompleteBookshelfList(bookObject){
                                   <li class="list-group-item"><span class="fw-semibold">Tahun</span> : ${bookObject.year}</li>
                                   <li class="list-group-item text-evenly">
                                     <button class="btn mx-1 border border-success btn-undo" style="background-color: #ff8c00; --bs-border-opacity: .10;" type="button" data-bookid="${bookObject.id}"><i class="fa-solid fa-rotate-right fa-flip-horizontal fa-lg btn-undo" style="color: #ffffff;" data-bookid="${bookObject.id}"></i></button>
-                                    <button class="btn btn-primary mx-1 btn-edit" type="button" data-bookid="${bookObject.id}"><i class="fa-solid fa-pen-to-square btn-edit" data-bookid="${bookObject.id}"></i></button>
+                                    <button class="btn btn-primary mx-1 btn-edit" type="button" data-bookid="${bookObject.id}" data-bs-toggle="modal" data-bs-target="#editBook"><i class="fa-solid fa-pen-to-square btn-edit" data-bookid="${bookObject.id}"></i></button>
                                     <button class="btn btn-danger mx-1 btn-delete" type="button" data-bookid="${bookObject.id}"><i class="fa-solid fa-trash-can btn-delete" data-bookid="${bookObject.id}"></i></button>
                                   </li>`
 
@@ -118,7 +118,26 @@ function removeBook(bookId){
   saveData();
 }
 
+function editDataBook(bookId){
+  console.log(bookId);
+  const bookTarget = findBook(bookId);
 
+  const btnSubmitEdit = document.getElementById(`btn-submit`);
+  btnSubmitEdit.addEventListener(`click`, function(){    
+    const editTitle = document.getElementById(`inputEditBookTitle`).value;
+    const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
+    const editYear = document.getElementById(`inputEditBookYear`).value;
+
+    if(editTitle !== null && editAuthor !== null && editYear !== null){
+      bookTarget.title = editTitle;
+      bookTarget.author = editAuthor;
+      bookTarget.year = editYear;
+  
+      saveData();
+      document.dispatchEvent(new Event(RENDER_EVENT));
+    }
+  })
+}
 
 document.addEventListener(`click`, function(event){
   if(event.target.classList.contains(`btn-complete`)){
@@ -132,7 +151,7 @@ document.addEventListener(`click`, function(event){
   }
   if(event.target.classList.contains(`btn-edit`)){
     const bookid = event.target.dataset.bookid;
-    console.log(bookid);
+    editDataBook(bookid);
   }
   if(event.target.classList.contains(`btn-delete`)){
     const bookid = event.target.dataset.bookid;

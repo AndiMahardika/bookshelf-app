@@ -11,7 +11,7 @@ document.addEventListener(`DOMContentLoaded`, function(){
     addBook();
   })
 
-  if(isStorageExist){
+  if(isStorageExist()){
     loadDataFromStorage()
   }
 })
@@ -19,7 +19,7 @@ document.addEventListener(`DOMContentLoaded`, function(){
 function addBook(){
   const bookTitle = document.getElementById(`inputBookTitle`).value;
   const authorName = document.getElementById(`inputBookAuthor`).value;
-  const yearPublished = document.getElementById(`inputBookYear`).value;
+  const yearPublished = parseInt(document.getElementById(`inputBookYear`).value);
   const readStatus = document.getElementById(`inputBookIsComplete`).checked;
 
   const generateId = generateID();
@@ -28,12 +28,6 @@ function addBook(){
 
   document.dispatchEvent(new Event(RENDER_EVENT));
   saveData();
-
-  document.getElementById(`inputBookTitle`).value = ``;
-  document.getElementById(`inputBookAuthor`).value = ``;
-  document.getElementById(`inputBookYear`).value = ``;
-  document.getElementById(`inputBookIsComplete`).checked = ``;
-
 }
 
 function generateID(){
@@ -131,19 +125,15 @@ function editDataBook(bookId){
   btnSubmitEdit.addEventListener(`click`, function(){    
     const editTitle = document.getElementById(`inputEditBookTitle`).value;
     const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
-    const editYear = document.getElementById(`inputEditBookYear`).value;
+    const editYear = parseInt(document.getElementById(`inputEditBookYear`).value);
 
-    if(editTitle.trim() !== '' && editAuthor.trim() !== '' && editYear.trim() !== ''){
+    if(editTitle !== null && editAuthor !== null && editYear !== null){
       bookTarget.title = editTitle;
       bookTarget.author = editAuthor;
       bookTarget.year = editYear;
   
       saveData();
       document.dispatchEvent(new Event(RENDER_EVENT));
-
-      document.getElementById(`inputEditBookTitle`).value = '';
-      document.getElementById(`inputEditBookAuthor`).value = '';
-      document.getElementById(`inputEditBookYear`).value = '';
     }
   })
 }

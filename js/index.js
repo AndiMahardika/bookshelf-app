@@ -118,25 +118,25 @@ function removeBook(bookId){
   saveData();
 }
 
-function editDataBook(bookId){
-  const bookTarget = findBook(bookId);
+// function editDataBook(bookId){
+//   const bookTarget = findBook(bookId);
 
-  const btnSubmitEdit = document.getElementById(`btn-submit`);
-  btnSubmitEdit.addEventListener(`click`, function(){    
-    const editTitle = document.getElementById(`inputEditBookTitle`).value;
-    const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
-    const editYear = parseInt(document.getElementById(`inputEditBookYear`).value);
+//   const btnSubmitEdit = document.getElementById(`btn-submit`);
+//   btnSubmitEdit.addEventListener(`click`, function(){    
+//     const editTitle = document.getElementById(`inputEditBookTitle`).value;
+//     const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
+//     const editYear = parseInt(document.getElementById(`inputEditBookYear`).value);
 
-    if(editTitle !== null && editAuthor !== null && editYear !== null){
-      bookTarget.title = editTitle;
-      bookTarget.author = editAuthor;
-      bookTarget.year = editYear;
+//     if(editTitle !== null && editAuthor !== null && editYear !== null){
+//       bookTarget.title = editTitle;
+//       bookTarget.author = editAuthor;
+//       bookTarget.year = editYear;
   
-      saveData();
-      document.dispatchEvent(new Event(RENDER_EVENT));
-    }
-  })
-}
+//       saveData();
+//       document.dispatchEvent(new Event(RENDER_EVENT));
+//     }
+//   })
+// }
 
 document.addEventListener(`click`, function(event){
   if(event.target.classList.contains(`btn-complete`)){
@@ -149,7 +149,8 @@ document.addEventListener(`click`, function(event){
   }
   if(event.target.classList.contains(`btn-edit`)){
     const bookid = event.target.dataset.bookid;
-    editDataBook(bookid);
+    // editDataBook(bookid);
+    showEditModal(bookid);
   }
   if(event.target.classList.contains(`btn-delete`)){
     const bookid = event.target.dataset.bookid;
@@ -202,6 +203,30 @@ function showSearchModal(book) {
       </ul>
   `;
   searchModal.show();
+}
+
+function showEditModal(bookId){
+  const editModal = new bootstrap.Modal(document.getElementById(`editBook`));
+
+  const modalEdit = document.querySelector(`#editBook .modal-body`);
+  modalEdit.innerHTML = `
+    <h4 class="text-center">Edit Buku</h4>
+    <form id="editBookForm" >  
+      <div class="mb-3">
+        <label for="inputEditBookTitle" class="form-label"><strong>Judul</strong></label>
+        <input type="text" class="form-control" id="inputEditBookTitle" placeholder="Judul" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputEditBookAuthor" class="form-label"><strong>Penulis</strong></label>
+        <input type="text" class="form-control" id="inputEditBookAuthor" placeholder="Penulis" required>
+      </div>
+      <div class="mb-3">
+        <label for="inputEditBookYear" class="form-label"><strong>Tahun</strong></label>
+        <input type="number" class="form-control" id="inputEditBookYear" required>
+      </div>
+    </form>
+  `;
+  editModal.show();
 }
 
 // RENDER_EVENT

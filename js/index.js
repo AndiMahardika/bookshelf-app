@@ -139,21 +139,23 @@ function removeBook(bookId){
 // }
 
 document.addEventListener(`click`, function(event){
-  if(event.target.classList.contains(`btn-complete`)){
-    const bookid = event.target.dataset.bookid;
+  const target = event.target;
+
+  if(target.classList.contains(`btn-complete`)){
+    const bookid = target.dataset.bookid;
     addBookToComplete(bookid);
   }
-  if(event.target.classList.contains(`btn-undo`)){
-    const bookid = event.target.dataset.bookid;
+  if(target.classList.contains(`btn-undo`)){
+    const bookid = target.dataset.bookid;
     undoBookToComplete(bookid);
   }
-  if(event.target.classList.contains(`btn-edit`)){
-    const bookid = event.target.dataset.bookid;
+  if(target.classList.contains(`btn-edit`)){
+    const bookid = target.dataset.bookid;
     // editDataBook(bookid);
     showEditModal(bookid);
   }
-  if(event.target.classList.contains(`btn-delete`)){
-    const bookid = event.target.dataset.bookid;
+  if(target.classList.contains(`btn-delete`)){
+    const bookid = target.dataset.bookid;
     removeBook(bookid);
   }
 })
@@ -207,6 +209,7 @@ function showSearchModal(book) {
 
 function showEditModal(bookId){
   const editModal = new bootstrap.Modal(document.getElementById(`editBook`));
+  // const bookTarget = findBook(bookId);
 
   const modalEdit = document.querySelector(`#editBook .modal-body`);
   modalEdit.innerHTML = `
@@ -224,9 +227,31 @@ function showEditModal(bookId){
         <label for="inputEditBookYear" class="form-label"><strong>Tahun</strong></label>
         <input type="number" class="form-control" id="inputEditBookYear" required>
       </div>
+      <div class="modal-footer justify-content-start">
+            <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn text-light fw-semibold" data-bs-dismiss="modal" id="btn-submit" style="background-color: #94cd32;">Save changes</button>
+      </div>
     </form>
   `;
   editModal.show();
+
+  // const btnSubmitEdit = document.getElementById(`btn-submit`);
+
+  // btnSubmitEdit.addEventListener(`click`, function(){    
+  // const editTitle = document.getElementById(`inputEditBookTitle`).value;
+  // const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
+  // const editYear = parseInt(document.getElementById(`inputEditBookYear`).value);
+
+  //   if(editTitle !== null && editAuthor !== null && editYear !== null){
+  //     bookTarget.title = editTitle;
+  //     bookTarget.author = editAuthor;
+  //     bookTarget.year = editYear;
+  
+  //     saveData();
+  //     document.dispatchEvent(new Event(RENDER_EVENT));
+  //     editModal.hide();
+  //   }
+  // })
 }
 
 // RENDER_EVENT

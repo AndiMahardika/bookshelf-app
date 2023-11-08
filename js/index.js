@@ -118,26 +118,6 @@ function removeBook(bookId){
   saveData();
 }
 
-// function editDataBook(bookId){
-//   const bookTarget = findBook(bookId);
-
-//   const btnSubmitEdit = document.getElementById(`btn-submit`);
-//   btnSubmitEdit.addEventListener(`click`, function(){    
-//     const editTitle = document.getElementById(`inputEditBookTitle`).value;
-//     const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
-//     const editYear = parseInt(document.getElementById(`inputEditBookYear`).value);
-
-//     if(editTitle !== null && editAuthor !== null && editYear !== null){
-//       bookTarget.title = editTitle;
-//       bookTarget.author = editAuthor;
-//       bookTarget.year = editYear;
-  
-//       saveData();
-//       document.dispatchEvent(new Event(RENDER_EVENT));
-//     }
-//   })
-// }
-
 document.addEventListener(`click`, function(event){
   const target = event.target;
 
@@ -151,8 +131,7 @@ document.addEventListener(`click`, function(event){
   }
   if(target.classList.contains(`btn-edit`)){
     const bookid = target.dataset.bookid;
-    // editDataBook(bookid);
-    showEditModal(bookid);
+    editDataBook(bookid);
   }
   if(target.classList.contains(`btn-delete`)){
     const bookid = target.dataset.bookid;
@@ -207,51 +186,24 @@ function showSearchModal(book) {
   searchModal.show();
 }
 
-function showEditModal(bookId){
-  const editModal = new bootstrap.Modal(document.getElementById(`editBook`));
-  // const bookTarget = findBook(bookId);
-
-  const modalEdit = document.querySelector(`#editBook .modal-body`);
-  modalEdit.innerHTML = `
-    <h4 class="text-center">Edit Buku</h4>
-    <form id="editBookForm" >  
-      <div class="mb-3">
-        <label for="inputEditBookTitle" class="form-label"><strong>Judul</strong></label>
-        <input type="text" class="form-control" id="inputEditBookTitle" placeholder="Judul" required>
-      </div>
-      <div class="mb-3">
-        <label for="inputEditBookAuthor" class="form-label"><strong>Penulis</strong></label>
-        <input type="text" class="form-control" id="inputEditBookAuthor" placeholder="Penulis" required>
-      </div>
-      <div class="mb-3">
-        <label for="inputEditBookYear" class="form-label"><strong>Tahun</strong></label>
-        <input type="number" class="form-control" id="inputEditBookYear" required>
-      </div>
-      <div class="modal-footer justify-content-start">
-            <button type="button" class="btn btn-danger fw-semibold" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn text-light fw-semibold" data-bs-dismiss="modal" id="btn-submit" style="background-color: #94cd32;">Save changes</button>
-      </div>
-    </form>
-  `;
-  editModal.show();
-
-  // const btnSubmitEdit = document.getElementById(`btn-submit`);
-
-  // btnSubmitEdit.addEventListener(`click`, function(){    
-  // const editTitle = document.getElementById(`inputEditBookTitle`).value;
-  // const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
-  // const editYear = parseInt(document.getElementById(`inputEditBookYear`).value);
-
-  //   if(editTitle !== null && editAuthor !== null && editYear !== null){
-  //     bookTarget.title = editTitle;
-  //     bookTarget.author = editAuthor;
-  //     bookTarget.year = editYear;
+function editDataBook(bookId){
+  const bookTarget = findBook(bookId)
   
-  //     saveData();
-  //     document.dispatchEvent(new Event(RENDER_EVENT));
-  //     editModal.hide();
-  //   }
-  // })
+  const btnSubmitEdit = document.getElementById(`btn-submit`);
+  btnSubmitEdit.addEventListener(`click`, function(){    
+    const editTitle = document.getElementById(`inputEditBookTitle`).value;
+    const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
+    const editYear = document.getElementById(`inputEditBookYear`).value;
+  
+    if(editTitle !== null && editAuthor !== null && editYear !== null){
+      bookTarget.title = editTitle;
+      bookTarget.author = editAuthor;
+      bookTarget.year = editYear;
+  
+      saveData();
+      document.dispatchEvent(new Event(RENDER_EVENT));
+    }
+    })
 }
 
 // RENDER_EVENT

@@ -17,8 +17,8 @@ document.addEventListener(`DOMContentLoaded`, function(){
 })
 
 function addBook(){
-  const bookTitle = document.getElementById(`inputBookTitle`).value;
-  const authorName = document.getElementById(`inputBookAuthor`).value;
+  const bookTitle = capitalizeFirstLetter(document.getElementById(`inputBookTitle`).value);
+  const authorName = capitalizeFirstLetter(document.getElementById(`inputBookAuthor`).value);
   const yearPublished = parseInt(document.getElementById(`inputBookYear`).value);
   const readStatus = document.getElementById(`inputBookIsComplete`).checked;
 
@@ -204,6 +204,10 @@ function editDataBook(bookId){
       document.dispatchEvent(new Event(RENDER_EVENT));
     }
     })
+}
+
+function capitalizeFirstLetter(word){
+  return `${word.charAt(0).toUpperCase()}${word.slice(1)}`
 }
 
 // RENDER_EVENT

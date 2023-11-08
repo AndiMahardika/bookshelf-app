@@ -140,7 +140,9 @@ document.addEventListener(`click`, function(event){
 })
 
 function findTitle(bookTitle){
+  console.log(bookTitle);
   for (const itemBook of books) {
+    console.log(itemBook.title)
     if(itemBook.title == bookTitle){
       return itemBook;
     }
@@ -150,8 +152,10 @@ function findTitle(bookTitle){
 
 const btnSearch = document.getElementById(`btn-search`);
 btnSearch.addEventListener(`click`, function(){
-  const inputSearch = document.getElementById(`inputSearch`).value;
+  const inputSearch = capitalizeFirstLetter(document.getElementById(`inputSearch`).value);
   const targetSearch = findTitle(inputSearch);
+  console.log(inputSearch);
+  console.log(targetSearch);
 
   if (targetSearch) {
     showSearchModal(targetSearch);
@@ -191,8 +195,8 @@ function editDataBook(bookId){
   
   const btnSubmitEdit = document.getElementById(`btn-submit`);
   btnSubmitEdit.addEventListener(`click`, function(){    
-    const editTitle = document.getElementById(`inputEditBookTitle`).value;
-    const editAuthor = document.getElementById(`inputEditBookAuthor`).value;
+    const editTitle = capitalizeFirstLetter(document.getElementById(`inputEditBookTitle`).value);
+    const editAuthor = capitalizeFirstLetter(document.getElementById(`inputEditBookAuthor`).value);
     const editYear = document.getElementById(`inputEditBookYear`).value;
   
     if(editTitle !== null && editAuthor !== null && editYear !== null){

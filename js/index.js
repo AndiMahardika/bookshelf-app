@@ -16,6 +16,7 @@ document.addEventListener(`DOMContentLoaded`, function(){
   }
 })
 
+// Fungsi untuk menambahkan buku baru ke dalam array books
 function addBook(){
   const bookTitle = capitalizeFirstLetter(document.getElementById(`inputBookTitle`).value);
   const authorName = capitalizeFirstLetter(document.getElementById(`inputBookAuthor`).value);
@@ -30,6 +31,7 @@ function addBook(){
   saveData();
 }
 
+// Fungsi untuk menghasilkan ID unik berdasarkan timestamp.
 function generateID(){
   return +new Date()
 }
@@ -44,6 +46,7 @@ function generateBookObject(id, title, author, year, status){
   }
 }
  
+// Fungsi untuk membuat elemen daftar buku yang belum selesai
 function itemUncompleteBookshelfList(bookObject){
   const bookGroupUncompleted = document.createElement(`ul`);
   bookGroupUncompleted.classList.add(`list-group` ,`mb-2`);
@@ -59,6 +62,7 @@ function itemUncompleteBookshelfList(bookObject){
   return bookGroupUncompleted;                      
 }
 
+// Fungsi untuk membuat elemen daftar buku yang sudah selesai.
 function itemCompleteBookshelfList(bookObject){
   const bookGroupCompleted = document.createElement(`ul`)
   bookGroupCompleted.classList.add(`list-group` ,`mb-2`);
@@ -74,6 +78,7 @@ function itemCompleteBookshelfList(bookObject){
   return bookGroupCompleted;                                  
 }
 
+// Fungsi untuk mencari buku berdasarkan ID
 function findBook(bookId){
   for (const bookTarget of books) {
     if (bookTarget.id == bookId) {
@@ -83,6 +88,7 @@ function findBook(bookId){
   return null;
 }
 
+// Fungsi untuk mencari indeks buku berdasarkan ID
 function findBookIndex(bookId){
   for (const index in books) {
     if(books[index].id == bookId){
@@ -92,6 +98,7 @@ function findBookIndex(bookId){
   return -1;
 }
 
+// Fungsi untuk menandai buku sebagai sudah selesai
 function addBookToComplete(bookId){
   const bookTarget = findBook(bookId);
 
@@ -100,6 +107,7 @@ function addBookToComplete(bookId){
   saveData();
 }
 
+// Fungsi untuk mengembalikan status buku menjadi belum selesai
 function undoBookToComplete(bookId){
   const bookTarget = findBook(bookId);
 
@@ -108,6 +116,7 @@ function undoBookToComplete(bookId){
   saveData();
 }
 
+// Fungsi untuk menghapus buku dari array books
 function removeBook(bookId){
   const bookTarget = findBookIndex(bookId);
 
@@ -139,6 +148,7 @@ document.addEventListener(`click`, function(event){
   }
 })
 
+// Fungsi untuk mencari buku berdasarkan judul
 function findTitle(bookTitle){
   console.log(bookTitle);
   for (const itemBook of books) {
@@ -150,6 +160,7 @@ function findTitle(bookTitle){
   return null;
 }
 
+// Event listener untuk mencari buku berdasarkan judul
 const btnSearch = document.getElementById(`btn-search`);
 btnSearch.addEventListener(`click`, function(){
   const inputSearch = capitalizeFirstLetter(document.getElementById(`inputSearch`).value);
@@ -190,6 +201,7 @@ function showSearchModal(book) {
   searchModal.show();
 }
 
+// Fungsi untuk mengedit data buku.
 function editDataBook(bookId){
   const bookTarget = findBook(bookId)
   
@@ -210,6 +222,7 @@ function editDataBook(bookId){
     })
 }
 
+// Fungsi untuk mengkapitalisasi huruf pertama 
 function capitalizeFirstLetter(word){
   return `${word.charAt(0).toUpperCase()}${word.slice(1)}`
 }
